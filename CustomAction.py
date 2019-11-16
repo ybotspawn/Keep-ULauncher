@@ -4,7 +4,6 @@ import logging
 import subprocess
 import tempfile
 from ulauncher.api.shared.action.BaseAction import BaseAction
-from ulauncher.utils.decorator.run_async import run_async
 
 class CustomAction(BaseAction):
     """
@@ -19,7 +18,21 @@ class CustomAction(BaseAction):
         self.script = script
         self.args = args
 
+    def load_libraries(self):
+        pass
+
     def run(self):
+
+        keep = gkeepapi.Keep()
+        success = keep.login(creds[0].replace(' ', '').replace('\n',''), creds[1])
+
+
+        note = keep.createNote('Todo', 'Eat breakfast')
+        note.pinned = True
+        note.color = gkeepapi.node.ColorValue.Blue
+
+
+
         file = tempfile.NamedTemporaryFile(prefix='ulauncher_RunScript_', delete=False)
 
         try:
