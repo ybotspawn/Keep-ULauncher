@@ -1,0 +1,26 @@
+{
+    "required_api_version": "^2.0.0",
+    "name": "Google Keep",
+    "description": "Quick access to Google Keep notes",
+    "developer_name": "ybotspawn",
+    "icon": "images/icon.svg",
+    "options": {
+      "query_debounce": 0.1
+    },
+    "preferences": [
+      {
+        "id": "remmina",
+        "type": "keyword",
+        "name": "Remmina",
+        "description": "Quick access to Remmina profiles",
+        "default_value": "r"
+      },
+      {
+        "id": "profiles",
+        "type": "input",
+        "name": "Remmina Profiles Directory",
+        "description": "Where Remmina stores profile configuration files <br /><code>~/.local/share/remmina</code> and <code>~/.remmina</code> are checked by default",
+        "default_value": ""
+      }
+    ]
+  }

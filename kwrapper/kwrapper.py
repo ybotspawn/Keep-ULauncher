@@ -1,5 +1,7 @@
 import gkeepapi
 from pathlib import Path
+
+# Build a mechanism to grab the creds
 home = str(Path.home())
 credfile = open(home + '/creds.txt','r') 
 creds = credfile.readlines()
@@ -15,3 +17,4 @@ note = keep.createNote('Todo', 'Eat breakfast')
 note.pinned = True
 note.color = gkeepapi.node.ColorValue.Blue
 keep.sync()
+
