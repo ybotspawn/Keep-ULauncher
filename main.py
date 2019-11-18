@@ -36,7 +36,7 @@ class ItemEnterEventListener(EventListener):
         data = event.get_data()
         # logger.info("uLauncher Keep ItemEnterEventListener, got data: %s" % str(data))
         on_enter = data["text"]
-        parse_create_note(on_enter)
+        self.parse_create_note(on_enter)
         keep = gkeepapi.Keep()
         keep.login(extension.preferences["keyuser"], extension.preferences["keycode"])
         if (True): # Placeholder for create vs search logic
