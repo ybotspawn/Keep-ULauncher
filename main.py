@@ -28,12 +28,12 @@ class ItemEnterEventListener(EventListener):
         # logger.debug("uLauncher Keep ItemEnterEventListener: entry")
         data = event.get_data()
         # logger.info("uLauncher Keep ItemEnterEventListener, got data: %s" % str(data))
-        # on_enter = data["id"]
+        on_enter = data["id"]
 
         keep = gkeepapi.Keep()
         keep.login(extension.preferences["keyuser"], extension.preferences["keycode"])
         if (True): # Placeholder for create vs search logic
-            note = keep.createNote("TestNode", "Another Test note from ULauncher; %s" %data)
+            note = keep.createNote("TestNode", "Another Test note from ULauncher; %s" %on_enter)
         keep.sync()
         return HideWindowAction()        
 
