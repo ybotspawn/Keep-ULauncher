@@ -19,24 +19,7 @@ class KeepExtension(Extension):
     def __init__(self):
         super(KeepExtension, self).__init__()
         self.subscribe(KeywordQueryEvent, KeywordQueryEventListener())
-        # self.subscribe(ItemEnterEvent, ItemEnterEventListener())
-    def test_results(self):
-        return [
-            ExtensionResultItem(
-                name="A",
-                description="Letter A",
-                keyword="a"
-            ), 
-            ExtensionResultItem(
-                name="B",
-                description="Letter B",
-                keyword="b"
-            ),ExtensionResultItem(
-                name="C",
-                description="Letter C",
-                keyword="C"
-            )]
-    
+        # self.subscribe(ItemEnterEvent, ItemEnterEventListener())    
 
 # class ItemEnterEventListener(EventListener):
 #     def on_event(self, event, extension):
@@ -48,7 +31,8 @@ class KeepExtension(Extension):
 class KeywordQueryEventListener(EventListener):
     def on_event(self, event, extension):
         items = []
-        items.append(ExtensionResultItem(icon='images/keep-icon.svg', name="A", description='A', on_enter=ExtensionCustomAction("d", keep_app_open=True)))
+        items.append(ExtensionResultItem(icon='images/keep-icon.svg', name="Create new note", description='C', on_enter=ExtensionCustomAction("create", keep_app_open=True)))
+        items.append(ExtensionResultItem(icon='images/keep-icon.svg', name="Search existing notes", description='S', on_enter=ExtensionCustomAction("create", keep_app_open=True)))
         return RenderResultListAction(items)
 
 if __name__ == "__main__":
