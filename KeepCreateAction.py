@@ -1,5 +1,4 @@
 import gkeepapi
-from ulauncher.utils.decorator.run_async import run_async
 from ulauncher.api.shared.action.BaseAction import BaseAction
 
 class KeepCreateAction(BaseAction):
@@ -41,11 +40,8 @@ class KeepCreateAction(BaseAction):
         
         # try:
         note = self.keep.createNote(self.title, self.text)
+        note.pinned = True
+        note.color = gkeepapi._node.ColorValue.Red
         # except Exception as error:
         #     raise RuntimeError("Error creating note: %s" % str(error))
-        # self.sync_keep()
         self.keep.sync()
-    
-    # @run_async(daemon=True)
-    # def sync_keep(self):
-    #     self.keep.sync()

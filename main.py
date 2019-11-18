@@ -27,12 +27,6 @@ class ItemEnterEventListener(EventListener):
     def on_event(self, event, extension):
         eventData = event.get_data()
         data = eventData["data"]
-        # keep = gkeepapi.Keep()
-        # keep.login(extension.preferences["keyuser"], extension.preferences["keycode"])
-        # if (True): # Placeholder for create vs search logic
-        #     note = keep.createNote(self.title, self.text)
-        # keep.sync()
-        # return HideWindowAction()        
         return KeepCreateAction(extension.preferences["keyuser"], extension.preferences["keycode"], data).run()
 
 class KeywordQueryEventListener(EventListener):
