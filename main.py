@@ -41,7 +41,7 @@ class ItemEnterEventListener(EventListener):
         #     note = keep.createNote(self.title, self.text)
         # keep.sync()
         # return HideWindowAction()        
-        return KeepCreateAction(extension.preferences["keyuser"], extension.preferences["keycode"], self.title, self.text)
+        return KeepCreateAction(extension.preferences["keyuser"], extension.preferences["keycode"], self.title, self.text).run()
 
 class KeywordQueryEventListener(EventListener):
     def on_event(self, event, extension):
