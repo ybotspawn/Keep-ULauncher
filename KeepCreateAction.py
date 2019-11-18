@@ -17,9 +17,7 @@ class KeepCreateAction(BaseAction):
 
     :param str method: method referenced in customaction
     """
-
-
-
+    
     # def __init__(self, username, password, title=None, text=None):
     #     self.username = username
     #     self.password = password
@@ -43,7 +41,7 @@ class KeepCreateAction(BaseAction):
         #     raise RuntimeError("Error creating note: %s" % str(error))
         # self.sync_keep()
         pass
-    
-    # @run_async(daemon=True)
-    # def sync_keep(self):
-    #     self.keep.sync()
+
+# @run_async(daemon=True)
+# def sync_keep(self):
+#     self.keep.sync()
