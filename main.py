@@ -21,18 +21,22 @@ class KeepExtension(Extension):
         self.subscribe(KeywordQueryEvent, KeywordQueryEventListener())
         # self.subscribe(ItemEnterEvent, ItemEnterEventListener())    
 
-# class ItemEnterEventListener(EventListener):
-#     def on_event(self, event, extension):
-#         # pref_profiles_path = extension.preferences['profiles']
-#         logger.debug("uLauncher Keep ItemEnterEventListener")
-#         # return KeepCreateAction.KeepCreateAction()
-#         return BaseAction()
+class ItemEnterEventListener(EventListener):
+    def on_event(self, event, extension):
+        # pref_profiles_path = extension.preferences['profiles']
+        logger.debug("uLauncher Keep ItemEnterEventListener: entry")
+        data = event.get_data()
+        logger.debug("uLauncher Keep ItemEnterEventListener: got data")
+        on_enter = data["id"]
+        logger.debug("uLauncher Keep ItemEnterEventListener, on_enter: %s" %on_enter)
+        # return KeepCreateAction.KeepCreateAction()
+        return BaseAction()
 
 class KeywordQueryEventListener(EventListener):
     def on_event(self, event, extension):
         items = []
-        items.append(ExtensionResultItem(icon='images/keep-icon.svg', name="Create new note", description='C', on_enter=ExtensionCustomAction("create", keep_app_open=True)))
-        items.append(ExtensionResultItem(icon='images/keep-icon.svg', name="Search existing notes", description='S', on_enter=ExtensionCustomAction("create", keep_app_open=True)))
+        items.append(ExtensionResultItem(icon='images/keep-icon.svg', name="Create", description='Create a new not', on_enter=ExtensionCustomAction("create", keep_app_open=True)))
+        # items.append(ExtensionResultItem(icon='images/keep-icon.svg', name="Search", description='Search existing notes', on_enter=ExtensionCustomAction("create", keep_app_open=True)))
         return RenderResultListAction(items)
 
 if __name__ == "__main__":
