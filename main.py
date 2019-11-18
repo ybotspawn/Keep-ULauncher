@@ -26,7 +26,7 @@ class KeepExtension(Extension):
 class ItemEnterEventListener(EventListener):
     def on_event(self, event, extension):
         eventData = event.get_data()
-        data = data["data"]
+        data = eventData["data"]
         # keep = gkeepapi.Keep()
         # keep.login(extension.preferences["keyuser"], extension.preferences["keycode"])
         # if (True): # Placeholder for create vs search logic
