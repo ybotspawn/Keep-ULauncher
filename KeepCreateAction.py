@@ -25,6 +25,9 @@ class KeepCreateAction(BaseAction):
     #     self.text = text
     #     # self.color = color
     #     # self.args = args
+    def __init__(self, field):
+        self.t = field
+        self.run()
         
     def keep_app_open(self):
         return False
