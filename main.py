@@ -10,7 +10,6 @@ from ulauncher.api.shared.item.ExtensionResultItem import ExtensionResultItem
 from ulauncher.api.shared.item.SmallResultItem import SmallResultItem
 from ulauncher.api.shared.action import BaseAction
 from ulauncher.api.shared.action.RenderResultListAction import RenderResultListAction
-from KeepCreateAction import KeepCreateAction
 from ulauncher.api.shared.action.ExtensionCustomAction import ExtensionCustomAction
 from ulauncher.api.shared.action.HideWindowAction import HideWindowAction
 from ulauncher.api.shared.event import KeywordQueryEvent, ItemEnterEvent
