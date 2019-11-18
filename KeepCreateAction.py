@@ -38,10 +38,10 @@ class KeepCreateAction(BaseAction):
         keep = gkeepapi.Keep()
         keep.login(self.username, self.password)
 
-        try:
-            note = keep.createNote(self.title, self.text)
-            note.pinned = self.pinned
-            note.color = self.color
-            keep.sync()
-        except Exception as error:
-            raise RuntimeError("Error creating note: %s" % str(error))
+        # try:
+        note = keep.createNote(self.title, self.text)
+        note.pinned = self.pinned
+        note.color = self.color
+        keep.sync()
+        # except Exception as error:
+        #     raise RuntimeError("Error creating note: %s" % str(error))
