@@ -24,6 +24,7 @@ class KeepCreateAction(BaseAction):
         # self.pinned = pinned
         self.title = title
         self.text = text
+        self.run()
         # self.color = color
         # self.args = args
     # def __init__(self, field):
@@ -44,8 +45,8 @@ class KeepCreateAction(BaseAction):
         
         # except Exception as error:
         #     raise RuntimeError("Error creating note: %s" % str(error))
-        self.sync_keep()
+        # self.sync_keep()
     
-    @run_async(daemon=True)
-    def sync_keep(self):
-        self.keep.sync()
+    # @run_async(daemon=True)
+    # def sync_keep(self):
+    #     self.keep.sync()
