@@ -35,13 +35,14 @@ class KeepCreateAction(BaseAction):
         return False
 
     def run(self):
-        keep = gkeepapi.Keep()
-        keep.login(self.username, self.password)
+        # keep = gkeepapi.Keep()
+        # keep.login(self.username, self.password)
 
-        # try:
-        note = keep.createNote(self.title, self.text)
-        note.pinned = self.pinned
-        note.color = self.color
-        keep.sync()
+        # # try:
+        # note = keep.createNote(self.title, self.text)
+        # note.pinned = self.pinned
+        # note.color = self.color
+        # keep.sync()
+        pass
         # except Exception as error:
         #     raise RuntimeError("Error creating note: %s" % str(error))
