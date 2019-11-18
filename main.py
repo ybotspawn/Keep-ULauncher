@@ -19,6 +19,8 @@ class KeepExtension(Extension):
         super(KeepExtension, self).__init__()
         self.subscribe(KeywordQueryEvent, KeywordQueryEventListener())
         # self.subscribe(ItemEnterEvent, ItemEnterEventListener())
+    def test_results(self):
+        return ["one", "two", "three"]
 
 class ItemEnterEventListener(EventListener):
     def on_event(self, event, extension):
@@ -37,7 +39,7 @@ class KeywordQueryEventListener(EventListener):
         # Get query
         term = (event.get_argument() or "").lower()
         logger.debug("uLauncher Keep KeywordQueryEventListener argument: %s" % term)
-        #return RenderResultListAction(list(term))
+        return RenderResultListAction(extension.test_results)
 
 if __name__ == "__main__":
     KeepExtension().run()
