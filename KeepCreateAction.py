@@ -22,14 +22,14 @@ class KeepCreateAction(BaseAction):
     :param str method: method referenced in customaction
     """
 
-    def __init__(self, username, password, pinned=False, title=None, text=None, color=gkeepapi._node.ColorValue.White, args=None):
+    def __init__(self, username, password, title=None, text=None):
         self.username = username
         self.password = password
-        self.pinned = pinned
+        # self.pinned = pinned
         self.title = title
         self.text = text
-        self.color = color
-        self.args = args
+        # self.color = color
+        # self.args = args
         
     def keep_app_open(self):
         return False
