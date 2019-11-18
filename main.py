@@ -26,21 +26,17 @@ class KeepExtension(Extension):
 
 class ItemEnterEventListener(EventListener):
     def on_event(self, event, extension):
-        # pref_profiles_path = extension.preferences['profiles']
         # logger.debug("uLauncher Keep ItemEnterEventListener: entry")
-        # data = event.get_data()
+        data = event.get_data()
         # logger.info("uLauncher Keep ItemEnterEventListener, got data: %s" % str(data))
-        # on_enter = data["id"]
-        # logger.debug("uLauncher Keep ItemEnterEventListener, on_enter: %s" %on_enter)
-        # return KeepCreateAction(extension.preferences["keyuser"], extension.preferences["keycode"], "TestNote", "TestNoteFromULauncher").run()
-        #return HideWindowAction()
-        # return KeepCreateAction("One").run()
+        on_enter = data["id"]
 
         keep = gkeepapi.Keep()
         keep.login(extension.preferences["keyuser"], extension.preferences["keycode"])
-        note = keep.createNote("TestNode", "Another Test note from ULauncher")
+        if (True): # Placeholder for create vs search logic
+            note = keep.createNote("TestNode", "Another Test note from ULauncher; %s" %on_enter)
         keep.sync()
-        return HideWindowAction()
+        return HideWindowAction()        
 
 class KeywordQueryEventListener(EventListener):
     def on_event(self, event, extension):
