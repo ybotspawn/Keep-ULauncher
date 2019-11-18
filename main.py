@@ -12,6 +12,7 @@ from ulauncher.api.shared.action.RenderResultListAction import RenderResultListA
 from KeepCreateAction import KeepCreateAction
 from ulauncher.api.shared.action.ExtensionCustomAction import ExtensionCustomAction
 from ulauncher.api.shared.action.HideWindowAction import HideWindowAction
+from ulauncher.api.shared.event import KeywordQueryEvent, ItemEnterEvent
 
 logging.basicConfig()
 logger = logging.getLogger(__name__)
