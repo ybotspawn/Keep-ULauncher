@@ -5,8 +5,9 @@ import logging
 import subprocess
 import tempfile
 from ulauncher.api.shared.action.BaseAction import BaseAction
+from ulauncher.api.shared.action.HideWindowAction import HideWindowAction
 
-class KeepCreateAction(BaseAction):
+class KeepCreateAction(HideWindowAction):
     """
     Runs a custom python action
 
@@ -30,7 +31,6 @@ class KeepCreateAction(BaseAction):
         self.text = text
         self.color = color
         self.args = args
-
 
     def run(self):
         keep = gkeepapi.Keep()
