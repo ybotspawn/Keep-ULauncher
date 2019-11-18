@@ -24,27 +24,24 @@ class KeepCreateAction(BaseAction):
         # self.pinned = pinned
         self.title = title
         self.text = text
-        # self.color = color
-        # self.args = args
-    # def __init__(self, field):
-    #     self.t = field
-    #     self.run()
+        self.run()
         
     def keep_app_open(self):
         return False
 
     def run(self):
-        self.keep = gkeepapi.Keep()
-        self.keep.login(self.username, self.password)
+        # self.keep = gkeepapi.Keep()
+        # self.keep.login(self.username, self.password)
 
-        # try:
-        note = self.keep.createNote(self.title, self.text)
+        # # try:
+        # note = self.keep.createNote(self.title, self.text)
         # note.pinned = self.pinned
         # note.color = self.color
         
         # except Exception as error:
         #     raise RuntimeError("Error creating note: %s" % str(error))
         # self.sync_keep()
+        pass
     
     # @run_async(daemon=True)
     # def sync_keep(self):
