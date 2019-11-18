@@ -24,7 +24,6 @@ class KeepCreateAction(BaseAction):
         # self.pinned = pinned
         self.title = title
         self.text = text
-        self.run()
         
     def keep_app_open(self):
         return False
