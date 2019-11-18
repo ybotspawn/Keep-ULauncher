@@ -12,6 +12,7 @@ from ulauncher.api.shared.action.RenderResultListAction import RenderResultListA
 from ulauncher.api.shared.action.ExtensionCustomAction import ExtensionCustomAction
 from ulauncher.api.shared.action.HideWindowAction import HideWindowAction
 from ulauncher.api.shared.event import KeywordQueryEvent, ItemEnterEvent
+from KeepCreateAction import KeepCreateAction
 
 logging.basicConfig()
 logger = logging.getLogger(__name__)
@@ -34,12 +35,13 @@ class ItemEnterEventListener(EventListener):
         data = event.get_data()
         on_enter = data["text"]
         self.parse_create_note(on_enter)
-        keep = gkeepapi.Keep()
-        keep.login(extension.preferences["keyuser"], extension.preferences["keycode"])
-        if (True): # Placeholder for create vs search logic
-            note = keep.createNote(self.title, self.text)
-        keep.sync()
-        return HideWindowAction()        
+        # keep = gkeepapi.Keep()
+        # keep.login(extension.preferences["keyuser"], extension.preferences["keycode"])
+        # if (True): # Placeholder for create vs search logic
+        #     note = keep.createNote(self.title, self.text)
+        # keep.sync()
+        # return HideWindowAction()        
+        return KeepCreateAction(extension.preferences["keyuser"], extension.preferences["keycode"], self.title, self.text)
 
 class KeywordQueryEventListener(EventListener):
     def on_event(self, event, extension):
