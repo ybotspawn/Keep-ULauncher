@@ -1,0 +1,33 @@
+{
+    "required_api_version": "^2.0.0",
+    "name": "Google Keep",
+    "description": "Quick access to Google Keep notes",
+    "developer_name": "ybotspawn",
+    "icon": "images/keep-icon.svg",
+    "options": {
+      "query_debounce": 0.1
+    },
+    "preferences": [
+      {
+        "id": "keep",
+        "type": "keyword",
+        "name": "Keep",
+        "description": "Shortcut string for Google Keep access",
+        "default_value": "r"
+      },
+      {
+        "id": "keyuser",
+        "type": "input",
+        "name": "Google User Name",
+        "description": "Google ID of user account",
+        "default_value": ""
+      },
+      {
+        "id": "keycode",
+        "type": "input",
+        "name": "Google API key",
+        "description": "API passcode for access to Google Keep.  This information is kept within the application and not shared.  Information on obtaining this key can be found here: https://support.google.com/accounts/answer/185833?hl=en&ctx=ch_b%2F0%2FDisplayUnlockCaptcha",
+        "default_value": ""
+      }
+    ]
+  }
