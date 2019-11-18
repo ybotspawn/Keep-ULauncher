@@ -24,16 +24,23 @@ class KeepExtension(Extension):
         self.subscribe(ItemEnterEvent, ItemEnterEventListener())    
 
 class ItemEnterEventListener(EventListener):
+    def parse_create_note(self, query):
+        self.title = query.split(' ')[0]
+        if len(query.split(' ')) > 1:
+            self.text = query.split(' ')[1] # testing purposes
+        else:
+            self.text = "Blank text"
+
     def on_event(self, event, extension):
         # logger.debug("uLauncher Keep ItemEnterEventListener: entry")
         data = event.get_data()
         # logger.info("uLauncher Keep ItemEnterEventListener, got data: %s" % str(data))
         on_enter = data["text"]
-
+        parse_create_note(on_enter)
         keep = gkeepapi.Keep()
         keep.login(extension.preferences["keyuser"], extension.preferences["keycode"])
         if (True): # Placeholder for create vs search logic
-            note = keep.createNote("TestNode", "Another Test note from ULauncher; %s" %on_enter)
+            note = keep.createNote(self.title, self.text)
         keep.sync()
         return HideWindowAction()        
 
