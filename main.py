@@ -1,6 +1,7 @@
 import os
 import json
 import logging
+import gkeepapi
 import distutils.spawn
 from ulauncher.api.client.Extension import Extension
 from ulauncher.api.client.EventListener import EventListener
@@ -34,7 +35,12 @@ class ItemEnterEventListener(EventListener):
         # return KeepCreateAction(extension.preferences["keyuser"], extension.preferences["keycode"], "TestNote", "TestNoteFromULauncher").run()
         #return HideWindowAction()
         # return KeepCreateAction("One").run()
-        return 1
+
+        keep = gkeepapi.Keep()
+        keep.login(extension.preferences["keyuser"], extension.preferences["keycode"])
+        note = keep.createNote("TestNode", "Another Test note from ULauncher")
+        keep.sync()
+        return HideWindowAction()
 
 class KeywordQueryEventListener(EventListener):
     def on_event(self, event, extension):
