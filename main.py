@@ -27,7 +27,7 @@ class ItemEnterEventListener(EventListener):
     def parse_create_note(self, query):
         self.title = query.split(' ')[0]
         if len(query.split(' ')) > 1:
-            self.text = query.split(' ')[1] # testing purposes
+            self.text = query.replace(self.title, '').strip()
         else:
             self.text = "Blank text"
 
