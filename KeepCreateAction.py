@@ -18,12 +18,14 @@ class KeepCreateAction(BaseAction):
     :param str method: method referenced in customaction
     """
 
-    def __init__(self, username, password, title=None, text=None):
-        self.username = username
-        self.password = password
-        # self.pinned = pinned
-        self.title = title
-        self.text = text
+
+
+    # def __init__(self, username, password, title=None, text=None):
+    #     self.username = username
+    #     self.password = password
+    #     # self.pinned = pinned
+    #     self.title = title
+    #     self.text = text
         
     def keep_app_open(self):
         return False
