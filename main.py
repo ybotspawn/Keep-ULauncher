@@ -34,7 +34,7 @@ class ItemEnterEventListener(EventListener):
         # return KeepCreateAction(extension.preferences["keyuser"], extension.preferences["keycode"], "TestNote", "TestNoteFromULauncher").run()
         #return HideWindowAction()
         # return KeepCreateAction("One").run()
-        pass
+        return 1
 
 class KeywordQueryEventListener(EventListener):
     def on_event(self, event, extension):
