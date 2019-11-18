@@ -51,8 +51,6 @@ class KeywordQueryEventListener(EventListener):
     def on_event(self, event, extension):
         # pref_profiles_path = extension.preferences['profiles']
         logger.debug("uLauncher Keep KeywordQueryEventListener")
-        # Get query
-        term = (event.get_argument() or "").lower()
         logger.debug("uLauncher Keep KeywordQueryEventListener argument: %s" % term)
         return RenderResultListAction(extension.test_results)
 
