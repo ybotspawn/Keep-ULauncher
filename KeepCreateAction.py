@@ -15,30 +15,35 @@ class KeepCreateAction(BaseAction):
     :param str method: method referenced in customaction
     """
 
-    def __init__(self, username, password, title=None, text=None):
+    def __init__(self, username, password, data):
         self.username = username
         self.password = password
-        # self.pinned = pinned
-        self.title = title
-        self.text = text
-        # self.run()
+        self.parse_create_note(data)
         
     def keep_app_open(self):
         return False
 
+    def parse_create_note(self, data):
+        self.title = data.split(' ')[0]
+        if len(data.split(' ')) > 1:
+            self.text = data.replace(self.title, '').strip()
+        else:
+            self.text = ""
+
+        if not self.title:
+            self.title = "Placeholder"
+        if not self.text:
+            self.text = "Blank"
+
     def run(self):
         self.keep = gkeepapi.Keep()
         self.keep.login(self.username, self.password)
-
+        
         # try:
         note = self.keep.createNote(self.title, self.text)
-        # note.pinned = self.pinned
-        # note.color = self.color
-        
         # except Exception as error:
         #     raise RuntimeError("Error creating note: %s" % str(error))
         # self.sync_keep()
-        # pass
         self.keep.sync()
     
     # @run_async(daemon=True)

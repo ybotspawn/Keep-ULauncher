@@ -24,30 +24,22 @@ class KeepExtension(Extension):
         self.subscribe(ItemEnterEvent, ItemEnterEventListener())    
 
 class ItemEnterEventListener(EventListener):
-    def parse_create_note(self, query):
-        self.title = query.split(' ')[0]
-        if len(query.split(' ')) > 1:
-            self.text = query.replace(self.title, '').strip()
-        else:
-            self.text = ""
-
     def on_event(self, event, extension):
-        data = event.get_data()
-        on_enter = data["text"]
-        self.parse_create_note(on_enter)
+        eventData = event.get_data()
+        data = data["data"]
         # keep = gkeepapi.Keep()
         # keep.login(extension.preferences["keyuser"], extension.preferences["keycode"])
         # if (True): # Placeholder for create vs search logic
         #     note = keep.createNote(self.title, self.text)
         # keep.sync()
         # return HideWindowAction()        
-        return KeepCreateAction(extension.preferences["keyuser"], extension.preferences["keycode"], self.title, self.text).run()
+        return KeepCreateAction(extension.preferences["keyuser"], extension.preferences["keycode"], data).run()
 
 class KeywordQueryEventListener(EventListener):
     def on_event(self, event, extension):
         items = []
-        query = event.get_argument()
-        items.append(ExtensionResultItem(icon='images/keep-icon.svg', name="Create", description='Create a new note', on_enter=ExtensionCustomAction({"id": 1, "text": query}, keep_app_open=False)))
+        data = event.get_argument()
+        items.append(ExtensionResultItem(icon='images/keep-icon.svg', name="Create", description='Create a new note', on_enter=ExtensionCustomAction({"id": 1, "data": data}, keep_app_open=False)))
         # items.append(ExtensionResultItem(icon='images/keep-icon.svg', name="Search", description='Search existing notes', on_enter=ExtensionCustomAction("create", keep_app_open=True)))
         return RenderResultListAction(items)
 
