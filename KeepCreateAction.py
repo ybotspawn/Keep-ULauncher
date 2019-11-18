@@ -39,8 +39,8 @@ class KeepCreateAction(BaseAction):
 
         # try:
         note = keep.createNote(self.title, self.text)
-        note.pinned = self.pinned
-        note.color = self.color
+        # note.pinned = self.pinned
+        # note.color = self.color
         keep.sync()
         # except Exception as error:
         #     raise RuntimeError("Error creating note: %s" % str(error))
