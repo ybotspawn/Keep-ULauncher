@@ -8,7 +8,6 @@ from ulauncher.api.client.EventListener import EventListener
 from ulauncher.api.shared.event import KeywordQueryEvent, ItemEnterEvent
 from ulauncher.api.shared.item.ExtensionResultItem import ExtensionResultItem
 from ulauncher.api.shared.item.SmallResultItem import SmallResultItem
-from ulauncher.api.shared.action import BaseAction
 from ulauncher.api.shared.action.RenderResultListAction import RenderResultListAction
 from ulauncher.api.shared.action.ExtensionCustomAction import ExtensionCustomAction
 from ulauncher.api.shared.action.HideWindowAction import HideWindowAction
@@ -29,12 +28,10 @@ class ItemEnterEventListener(EventListener):
         if len(query.split(' ')) > 1:
             self.text = query.replace(self.title, '').strip()
         else:
-            self.text = "Blank text"
+            self.text = ""
 
     def on_event(self, event, extension):
-        # logger.debug("uLauncher Keep ItemEnterEventListener: entry")
         data = event.get_data()
-        # logger.info("uLauncher Keep ItemEnterEventListener, got data: %s" % str(data))
         on_enter = data["text"]
         self.parse_create_note(on_enter)
         keep = gkeepapi.Keep()
@@ -48,7 +45,7 @@ class KeywordQueryEventListener(EventListener):
     def on_event(self, event, extension):
         items = []
         query = event.get_argument()
-        items.append(ExtensionResultItem(icon='images/keep-icon.svg', name="Create", description='Create a new note', on_enter=ExtensionCustomAction({"id": 1, "text": query}, keep_app_open=True)))
+        items.append(ExtensionResultItem(icon='images/keep-icon.svg', name="Create", description='Create a new note', on_enter=ExtensionCustomAction({"id": 1, "text": query}, keep_app_open=False)))
         # items.append(ExtensionResultItem(icon='images/keep-icon.svg', name="Search", description='Search existing notes', on_enter=ExtensionCustomAction("create", keep_app_open=True)))
         return RenderResultListAction(items)
 
