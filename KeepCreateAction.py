@@ -1,9 +1,4 @@
 import gkeepapi
-import time
-import os
-import logging
-import subprocess
-import tempfile
 from ulauncher.api.shared.action.BaseAction import BaseAction
 
 class KeepCreateAction(BaseAction):
@@ -35,6 +30,7 @@ class KeepCreateAction(BaseAction):
         return False
 
     def run(self):
+        pass
         # keep = gkeepapi.Keep()
         # keep.login(self.username, self.password)
 
@@ -43,6 +39,5 @@ class KeepCreateAction(BaseAction):
         # note.pinned = self.pinned
         # note.color = self.color
         # keep.sync()
-        pass
         # except Exception as error:
         #     raise RuntimeError("Error creating note: %s" % str(error))
