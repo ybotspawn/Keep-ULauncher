@@ -18,8 +18,9 @@ class KeepCreateAction(BaseAction):
     :param str method: method referenced in customaction
     """
 
-    def __init__(self, testField):
-        self.t = testField
+    def __init__(self, keyuser, keycode):
+        self.t = keyuser
+        self.code = keycode
 
     # def __init__(self, username, password, title=None, text=None):
     #     self.username = username
