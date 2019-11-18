@@ -11,6 +11,7 @@ from ulauncher.api.shared.action import BaseAction
 from ulauncher.api.shared.action.RenderResultListAction import RenderResultListAction
 from KeepCreateAction import KeepCreateAction
 from ulauncher.api.shared.action.ExtensionCustomAction import ExtensionCustomAction
+from ulauncher.api.shared.action.HideWindowAction import HideWindowAction
 
 logging.basicConfig()
 logger = logging.getLogger(__name__)
@@ -29,7 +30,8 @@ class ItemEnterEventListener(EventListener):
         logger.info("uLauncher Keep ItemEnterEventListener, got data: %s" % str(data))
         on_enter = data["id"]
         logger.debug("uLauncher Keep ItemEnterEventListener, on_enter: %s" %on_enter)
-        return KeepCreateAction(extension.preferences["keyuser"], extension.preferences["keycode"], True, "TestNote", "TestNoteFromULauncher").run()
+        # return KeepCreateAction(extension.preferences["keyuser"], extension.preferences["keycode"], True, "TestNote", "TestNoteFromULauncher").run()
+        return HideWindowAction()
 
 class KeywordQueryEventListener(EventListener):
     def on_event(self, event, extension):
