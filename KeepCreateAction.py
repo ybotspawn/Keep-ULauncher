@@ -17,30 +17,30 @@ class KeepCreateAction(BaseAction):
     :param str method: method referenced in customaction
     """
 
-    # def __init__(self, username, password, title=None, text=None):
-    #     self.username = username
-    #     self.password = password
-    #     # self.pinned = pinned
-    #     self.title = title
-    #     self.text = text
-    #     # self.color = color
-    #     # self.args = args
-    def __init__(self, field):
-        self.t = field
+    def __init__(self, username, password, title=None, text=None):
+        self.username = username
+        self.password = password
+        # self.pinned = pinned
+        self.title = title
+        self.text = text
         self.run()
+        # self.color = color
+        # self.args = args
+    # def __init__(self, field):
+    #     self.t = field
+    #     self.run()
         
     def keep_app_open(self):
         return False
 
     def run(self):
-        pass
-# keep = gkeepapi.Keep()
-# keep.login(self.username, self.password)
+        keep = gkeepapi.Keep()
+        keep.login(self.username, self.password)
 
-# # try:
-# note = keep.createNote(self.title, self.text)
-# note.pinned = self.pinned
-# note.color = self.color
-# keep.sync()
-# except Exception as error:
-#     raise RuntimeError("Error creating note: %s" % str(error))
+        # try:
+        note = keep.createNote(self.title, self.text)
+        note.pinned = self.pinned
+        note.color = self.color
+        keep.sync()
+        # except Exception as error:
+        #     raise RuntimeError("Error creating note: %s" % str(error))
