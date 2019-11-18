@@ -24,7 +24,6 @@ class KeepCreateAction(BaseAction):
         # self.pinned = pinned
         self.title = title
         self.text = text
-        self.run()
         # self.color = color
         # self.args = args
     # def __init__(self, field):
