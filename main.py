@@ -10,6 +10,7 @@ from ulauncher.api.shared.item.SmallResultItem import SmallResultItem
 from ulauncher.api.shared.action import BaseAction
 from ulauncher.api.shared.action.RenderResultListAction import RenderResultListAction
 from KeepCreateAction import KeepCreateAction
+from ulauncher.api.shared.action.ExtensionCustomAction import ExtensionCustomAction
 
 logging.basicConfig()
 logger = logging.getLogger(__name__)
@@ -37,18 +38,18 @@ class KeepExtension(Extension):
             )]
     
 
-class ItemEnterEventListener(EventListener):
-    def on_event(self, event, extension):
-        # pref_profiles_path = extension.preferences['profiles']
-        logger.debug("uLauncher Keep ItemEnterEventListener")
-        # return KeepCreateAction.KeepCreateAction()
-        return BaseAction()
+# class ItemEnterEventListener(EventListener):
+#     def on_event(self, event, extension):
+#         # pref_profiles_path = extension.preferences['profiles']
+#         logger.debug("uLauncher Keep ItemEnterEventListener")
+#         # return KeepCreateAction.KeepCreateAction()
+#         return BaseAction()
 
 class KeywordQueryEventListener(EventListener):
     def on_event(self, event, extension):
-        # pref_profiles_path = extension.preferences['profiles']
-        logger.debug("uLauncher Keep KeywordQueryEventListener")
-        return RenderResultListAction(extension.test_results)
+        items = []
+        items.append(ExtensionResultItem(icon='images/keep-icon.svg', name="A", description='A', on_enter=ExtensionCustomAction("d", keep_app_open=True)))
+        return RenderResultListAction(items)
 
 if __name__ == "__main__":
     KeepExtension().run()
