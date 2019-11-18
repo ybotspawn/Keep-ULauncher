@@ -13,7 +13,7 @@
         "type": "keyword",
         "name": "Keep",
         "description": "Shortcut string for Google Keep access",
-        "default_value": "r"
+        "default_value": "gk"
       },
       {
         "id": "keyuser",

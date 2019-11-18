@@ -37,7 +37,7 @@ class KeywordQueryEventListener(EventListener):
         # Get query
         term = (event.get_argument() or "").lower()
         logger.debug("uLauncher Keep KeywordQueryEventListener argument: %s" % term)
-        return RenderResultListAction(list(term))
+        #return RenderResultListAction(list(term))
 
 if __name__ == "__main__":
     KeepExtension().run()
