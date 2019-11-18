@@ -34,7 +34,7 @@ class ItemEnterEventListener(EventListener):
         keep = gkeepapi.Keep()
         keep.login(extension.preferences["keyuser"], extension.preferences["keycode"])
         if (True): # Placeholder for create vs search logic
-            note = keep.createNote("TestNode", "Another Test note from ULauncher; %s" %on_enter)
+            note = keep.createNote("TestNode", "Another Test note from ULauncher; %s" %data)
         keep.sync()
         return HideWindowAction()        
 
