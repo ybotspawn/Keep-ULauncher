@@ -29,8 +29,7 @@ class ItemEnterEventListener(EventListener):
         logger.info("uLauncher Keep ItemEnterEventListener, got data: %s" % str(data))
         on_enter = data["id"]
         logger.debug("uLauncher Keep ItemEnterEventListener, on_enter: %s" %on_enter)
-        # return KeepCreateAction.KeepCreateAction()
-        return BaseAction()
+        return KeepCreateAction(extension.preferences["keyuser"], extension.preferences["keycode"], True, "TestNote", "TestNoteFromULauncher")
 
 class KeywordQueryEventListener(EventListener):
     def on_event(self, event, extension):
