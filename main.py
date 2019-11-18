@@ -41,9 +41,6 @@ class ItemEnterEventListener(EventListener):
     def on_event(self, event, extension):
         # pref_profiles_path = extension.preferences['profiles']
         logger.debug("uLauncher Keep ItemEnterEventListener")
-        # Get query
-        term = (event.get_argument() or "").lower()
-        logger.debug("uLauncher Keep ItemEnterEventListener argument: %s" % term)
         # return KeepCreateAction.KeepCreateAction()
         return BaseAction()
 
