@@ -19,7 +19,7 @@ class KeepExtension(Extension):
     def __init__(self):
         super(KeepExtension, self).__init__()
         self.subscribe(KeywordQueryEvent, KeywordQueryEventListener())
-        # self.subscribe(ItemEnterEvent, ItemEnterEventListener())    
+        self.subscribe(ItemEnterEvent, ItemEnterEventListener())    
 
 class ItemEnterEventListener(EventListener):
     def on_event(self, event, extension):
