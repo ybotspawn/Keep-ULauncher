@@ -36,10 +36,10 @@ class KeepCreateAction(BaseAction):
 
     def run(self):
         self.keep = gkeepapi.Keep()
-        keep.login(self.username, self.password)
+        self.keep.login(self.username, self.password)
 
         # try:
-        note = keep.createNote(self.title, self.text)
+        note = self.keep.createNote(self.title, self.text)
         # note.pinned = self.pinned
         # note.color = self.color
         
