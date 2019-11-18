@@ -28,7 +28,7 @@ class ItemEnterEventListener(EventListener):
         # logger.debug("uLauncher Keep ItemEnterEventListener: entry")
         data = event.get_data()
         # logger.info("uLauncher Keep ItemEnterEventListener, got data: %s" % str(data))
-        on_enter = data["id"]
+        on_enter = data["text"]
 
         keep = gkeepapi.Keep()
         keep.login(extension.preferences["keyuser"], extension.preferences["keycode"])
@@ -40,7 +40,8 @@ class ItemEnterEventListener(EventListener):
 class KeywordQueryEventListener(EventListener):
     def on_event(self, event, extension):
         items = []
-        items.append(ExtensionResultItem(icon='images/keep-icon.svg', name="Create", description='Create a new note', on_enter=ExtensionCustomAction({"id": 1}, keep_app_open=True)))
+        query = event.get_argument()
+        items.append(ExtensionResultItem(icon='images/keep-icon.svg', name="Create", description='Create a new note', on_enter=ExtensionCustomAction({"id": 1, "text": query}, keep_app_open=True)))
         # items.append(ExtensionResultItem(icon='images/keep-icon.svg', name="Search", description='Search existing notes', on_enter=ExtensionCustomAction("create", keep_app_open=True)))
         return RenderResultListAction(items)
 
