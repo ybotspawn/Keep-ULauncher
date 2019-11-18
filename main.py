@@ -20,7 +20,22 @@ class KeepExtension(Extension):
         self.subscribe(KeywordQueryEvent, KeywordQueryEventListener())
         # self.subscribe(ItemEnterEvent, ItemEnterEventListener())
     def test_results(self):
-        return ["one", "two", "three"]
+        return [
+            ExtensionResultItem(
+                name="A",
+                description="Letter A",
+                keyword="a"
+            ), 
+            ExtensionResultItem(
+                name="B",
+                description="Letter B",
+                keyword="b"
+            ),ExtensionResultItem(
+                name="C",
+                description="Letter C",
+                keyword="C"
+            )]
+    
 
 class ItemEnterEventListener(EventListener):
     def on_event(self, event, extension):
