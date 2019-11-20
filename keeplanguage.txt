@@ -1,7 +1,7 @@
 Backus-Naur form langauge notation design for Keep Ulauncher note creation
 
 
-<keep-sentence> ::= <mandatory-phrase> [<optional-phrase>] | [<optional-phrase>] <mandatory-phrase>
+<keep-sentence> ::= [<optional-phrase>] <mandatory-phrase> [<optional-phrase>] 
 <mandatory-phrase> ::= <title-phrase> [optional-phrase] <text-phrase> | <text-phrase> [optional-phrase] <title-phrase>
 <optional-phrase> ::=[<optional-phrase>] <color> [<optional-phrase>] | [<optional-phrase>] <pinned> [<optional-phrase>]
 
