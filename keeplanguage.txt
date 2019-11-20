@@ -1,0 +1,13 @@
+Backus-Naur form langauge notation design for Keep Ulauncher note creation
+
+
+<keep-sentence> ::= <mandatory-phrase> [<optional-phrase>] | [<optional-phrase>] <mandatory-phrase>
+<mandatory-phrase> ::= <title-phrase> [optional-phrase] <text-phrase> | <text-phrase> [optional-phrase] <title-phrase>
+<optional> ::= <color> | <pinned> 
+
+
+<title-phrase> ::= "DESC:" <word>
+<text-phrase> ::= "TEXT:" <word>
+<word> ::= <word> [<word>]
+<color> ::= "BLUE" | "RED" | "GREEN" | "BROWN" | "DARKBLUE" | "GRAY" | "ORANGE" | "PINK" | "PURPLE" | "TEAL" | "WHITE" | "YELLOW"
+<pinned> ::= "TRUE" | "FALSE"

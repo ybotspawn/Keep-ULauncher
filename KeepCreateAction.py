@@ -41,7 +41,7 @@ class KeepCreateAction(BaseAction):
         # try:
         note = self.keep.createNote(self.title, self.text)
         note.pinned = True
-        note.color = gkeepapi._node.ColorValue.Red
+        note.color = gkeepapi._node.ColorValue.Blue
         # except Exception as error:
         #     raise RuntimeError("Error creating note: %s" % str(error))
         self.keep.sync()
