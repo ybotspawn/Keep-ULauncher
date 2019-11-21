@@ -4,8 +4,7 @@ class QueryParser:
     def __init__(self):
         pass
     def parse(self, stanza):
-
-        # if stanza starts with a color or pinned
+        # if stanza starts with a color or pinned --- match_optional
         #   optional
         # if stanza starts with title (DESC:)
         #   while true
@@ -15,6 +14,8 @@ class QueryParser:
         #   peek next stanza until hit another token
         pass
     def match_optional(self, stanza):
+        if (True):
+            return True
         pass
     def match_mandatory(self, stanza):
         pass
@@ -25,10 +26,10 @@ class Mandatory:
     self.textPhrase = None
 
 class TitlePhrase:
-    pass
+    self.title = None
 
 class TextPhrase:
-    pass
+    self.text = None
 
 class Optional:
     self.leftOptional = None
