@@ -1,4 +1,10 @@
 import gkeepapi
+import re
+
+TEXT_REGEX = "TEXT:"
+TITLE_REGEX = "DESC:"
+PINNED_REGEX = "TRUE|FALSE"
+COLOR_REGEX = "BLUE|RED|GREEN|BROWN|DARKBLUE|GRAY|ORANGE|PINK|PURPLE|TEAL|WHITE|YELLOW"
 
 class QueryParser:
     def __init__(self):
