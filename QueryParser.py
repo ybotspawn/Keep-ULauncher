@@ -10,25 +10,37 @@ class QueryParser:
     def __init__(self):
         pass
     def parse(self, stanza):
-        # if stanza starts with a color or pinned --- match_optional
-        #   optional
+        components = stanza.split()
+        self.query = Query()
+        for component in components:
+            print(component)
+            if (match_optional(component)): # if stanza starts with a color or pinned --- match_optional
+                #   optional
+                
+                pass
+        
+        
         # if stanza starts with title (DESC:)
         #   while true
         #   peek next stanza until hit another token
         # if stanza starts with text (TEXT:)
         #   while true
         #   peek next stanza until hit another token
+    def build_append_optional(self, component):
         pass
-    def match_optional(self, stanza):
+    def match_optional(self, component):
         if (True):
             return True
         pass
-    def match_mandatory(self, stanza):
+    def match_mandatory(self, component):
         pass
+
+class Query:
+    self.mandatoryPhrase = None
+    self.optionalPhrase = None
 
 class Mandatory:
     self.titlePhrase = None
-    self.optionalPhrase = None
     self.textPhrase = None
 
 class TitlePhrase:
@@ -38,8 +50,6 @@ class TextPhrase:
     self.text = None
 
 class Optional:
-    self.leftOptional = None
-    self.rightOptional = None
     self.color = None
     self.pinned = None
 
