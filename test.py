@@ -5,7 +5,7 @@ from QueryParser import *
 class TestParseMethods(unittest.TestCase):
 
     def test_query_phrase_one(self):
-        phrase = "DESC: Test Title TEXT: The yellow bird meets the red bee BLUE PINNED"
+        phrase = "DESC: Test Title TEXT: The yellow bird meets the red bee BLUE TRUE"
         parser = Parser(phrase)
         self.assertEqual(parser.k.mandatoryPhrase.textPhrase, "The yellow bird meets the red bee")
         self.assertEqual(parser.k.mandatoryPhrase.titlePhrase, "Test Title")

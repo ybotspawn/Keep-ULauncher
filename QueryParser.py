@@ -1,8 +1,3 @@
-#Build a mechanism to detect that no mandatory values are presentand fail silently
-
-
-
-
 import gkeepapi
 import re
 
@@ -46,11 +41,8 @@ class Parser:
     pSections = None
 
     def __init__(self, phrase):      
-        self.pSections = self.reverse(phrase)
+        self.pSections = [word for word in reversed(phrase.split(' '))] 
         self.parseKeepSentence()
-    
-    def reverse(self, phrase): # convert to a new array rather than a string that in turn gets turned back into an array?
-        return [word for word in reversed(phrase.split(' '))] 
 
     def parseKeepSentence(self): 
         self.optionalParse()
@@ -58,7 +50,7 @@ class Parser:
 
     def mandatoryParse(self):
         directive = self.pSections.pop()
-        while (directive == "TEXT:" or directive =="DESC:"):
+        while (re.match("TEXT:|DESC:", directive)):
             subPhrase = self.buildSubphrase()
             self.buildMandatoryElement(directive, subPhrase)
             directive = self.pSections.pop()
@@ -75,7 +67,7 @@ class Parser:
     def buildSubphrase(self):
         currentWord = self.pSections.pop()
         subPhrase = ""
-        while (not re.match("|".join(COLOR_MAPPING.keys()), currentWord) and currentWord != "TRUE" and currentWord != "DESC:" and currentWord != "TEXT:"):
+        while (not re.match("|".join(COLOR_MAPPING.keys()), currentWord) and not re.match("TEXT:|DESC:|TRUE", currentWord)):
             subPhrase = subPhrase + " " + currentWord
             if ( len(self.pSections) >0 ):
                 currentWord= self.pSections.pop()
