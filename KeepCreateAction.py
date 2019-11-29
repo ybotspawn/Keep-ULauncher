@@ -44,8 +44,8 @@ class KeepCreateAction(BaseAction):
         self.keep.login(self.username, self.password)
         
         # try:
-        note = self.keep.createNote("YBOT", self.parser.k.mandatoryPhrase.textPhrase)
-        note.pinned = True
+        note = self.keep.createNote(self.parser.k.mandatoryPhrase.titlePhrase, self.parser.k.mandatoryPhrase.textPhrase)
+        note.pinned = self.parser.k.optionalPhrase.pinned
         note.color = gkeepapi._node.ColorValue.Pink
         # except Exception as error:
         #     raise RuntimeError("Error creating note: %s" % str(error))
