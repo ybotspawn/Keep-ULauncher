@@ -44,7 +44,7 @@ class KeepCreateAction(BaseAction):
         
         # try:
         note = self.keep.createNote(self.parser.mandatoryParse.titlePhrase, self.parser.mandatoryParse.textPhrase)
-        # note.pinned = True
+        note.pinned = True
         note.color = self.parser.optionalParse.color
         # except Exception as error:
         #     raise RuntimeError("Error creating note: %s" % str(error))
