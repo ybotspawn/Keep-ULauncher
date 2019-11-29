@@ -24,12 +24,6 @@ class Mandatory:
     titlePhrase = None
     textPhrase = None
 
-class TitlePhrase:
-    title = None
-
-class TextPhrase:
-    text = None
-
 class Optional:
     color = gkeepapi._node.ColorValue.White
     pinned = False
