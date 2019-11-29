@@ -67,6 +67,14 @@ class TestParseMethods(unittest.TestCase):
         self.assertEqual(parser.k.mandatoryPhrase.titlePhrase, "Test Title")
         self.assertEqual(parser.k.optionalPhrase.pinned, False)
         self.assertEqual(parser.k.optionalPhrase.color, gkeepapi._node.ColorValue.Blue)
-        
+
+    def test_query_phrase_nine(self):
+        phrase = "TEXT: The yellow bird meets the red bee DESC: Test Title"
+        parser = Parser(phrase)
+        self.assertEqual(parser.k.mandatoryPhrase.textPhrase, "The yellow bird meets the red bee")
+        self.assertEqual(parser.k.mandatoryPhrase.titlePhrase, "Test Title")
+        self.assertEqual(parser.k.optionalPhrase.pinned, False)
+        self.assertEqual(parser.k.optionalPhrase.color, gkeepapi._node.ColorValue.White)
+
 if __name__ == '__main__':
     unittest.main()
