@@ -20,12 +20,9 @@ class KeepCreateAction(BaseAction):
         self.password = password
         self.parser = Parser(data)
         
-    def keep_app_open(self):
-        return False
+    # def keep_app_open(self):
+    #     return False
 
-    # def parse_create_note(self, data):
-    #     self.parser = Parser(data)
-        
     def run(self):
         self.keep = gkeepapi.Keep()
         self.keep.login(self.username, self.password)
