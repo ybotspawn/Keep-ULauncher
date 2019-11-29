@@ -1,10 +1,20 @@
 import gkeepapi
 import re
 
-TEXT_REGEX = "TEXT:"
-TITLE_REGEX = "DESC:"
-PINNED_REGEX = "TRUE|FALSE"
-COLOR_REGEX = "BLUE|RED|GREEN|BROWN|DARKBLUE|GRAY|ORANGE|PINK|PURPLE|TEAL|WHITE|YELLOW"
+COLOR_MAPPING = {
+    "BLUE": gkeepapi._node.ColorValue.Blue,
+    "RED": gkeepapi._node.ColorValue.Red,
+    "GREEN": gkeepapi._node.ColorValue.Green,
+    "BROWN": gkeepapi._node.ColorValue.Brown,
+    "DARKBLUE": gkeepapi._node.ColorValue.DarkBlue,
+    "GRAY": gkeepapi._node.ColorValue.Gray,
+    "ORANGE": gkeepapi._node.ColorValue.Orange,
+    "PINK": gkeepapi._node.ColorValue.Pink,
+    "PURPLE": gkeepapi._node.ColorValue.Purple,
+    "TEAL": gkeepapi._node.ColorValue.Teal,
+    "WHITE": gkeepapi._node.ColorValue.White,
+    "YELLOW": gkeepapi._node.ColorValue.Yellow
+}
 
 class KeepSentence:
     mandatoryPhrase = None
@@ -60,7 +70,7 @@ class Parser:
     def buildSubphrase(self):
         currentWord = self.pSections.pop()
         subPhrase = ""
-        while (not re.match(COLOR_REGEX, currentWord) and currentWord != "TRUE" and currentWord != "DESC:" and currentWord != "TEXT:"):
+        while (not re.match("|".join(COLOR_MAPPING.keys()), currentWord) and currentWord != "TRUE" and currentWord != "DESC:" and currentWord != "TEXT:"):
             subPhrase = subPhrase + " " + currentWord
             if ( len(self.pSections) >0 ):
                 currentWord= self.pSections.pop()
@@ -70,14 +80,14 @@ class Parser:
         return subPhrase.strip()
 
     def buildOptionalElement(self, element):
-        if (re.match(COLOR_REGEX, element)):
-            self.k.optionalPhrase.color = gkeepapi._node.ColorValue.Blue
+        if (re.match("|".join(COLOR_MAPPING.keys()), element)):
+            self.k.optionalPhrase.color = COLOR_MAPPING[element]
         else:
             self.k.optionalPhrase.pinned = True 
 
     def optionalParse(self):
         currentWord = self.pSections.pop()
-        while (re.match(COLOR_REGEX, currentWord) or currentWord == "TRUE"): 
+        while (re.match("|".join(COLOR_MAPPING.keys()), currentWord) or currentWord == "TRUE"): 
             self.buildOptionalElement(currentWord)
             if ( len(self.pSections) >0 ):
                 currentWord= self.pSections.pop()
