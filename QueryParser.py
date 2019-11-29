@@ -36,9 +36,6 @@ class Parser:
 
     def __init__(self, phrase):      
         self.pSections = [word for word in reversed(phrase.split(' '))] 
-        self.parseKeepSentence()
-
-    def parseKeepSentence(self): 
         self.optionalParse()
         self.mandatoryParse()
 
