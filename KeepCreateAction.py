@@ -37,15 +37,16 @@ class KeepCreateAction(BaseAction):
 
     def parse_create_note(self, data):
         self.parser = Parser(data)
+        self.value = "PCN"
         
     def run(self):
         self.keep = gkeepapi.Keep()
         self.keep.login(self.username, self.password)
         
         # try:
-        note = self.keep.createNote(self.parser.mandatoryParse.titlePhrase, self.parser.mandatoryParse.textPhrase)
+        note = self.keep.createNote("YBOT", "ybot " + self.value)
         note.pinned = True
-        note.color = self.parser.optionalParse.color
+        note.color = gkeepapi._node.ColorValue.Pink
         # except Exception as error:
         #     raise RuntimeError("Error creating note: %s" % str(error))
         self.keep.sync()
