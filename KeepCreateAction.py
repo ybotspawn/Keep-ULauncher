@@ -47,9 +47,9 @@ class KeepCreateAction(BaseAction):
         self.keep.login(self.username, self.password)
         
         # try:
-        note = self.keep.createNote(self.parser.k.mandatoryPhrase.titlePhrase, self.parser.k.mandatoryPhrase.textPhrase)
-        note.pinned = self.parser.k.optionalPhrase.pinned
-        note.color =self.parser.k.optionalPhrase.color
+        note = self.keep.createNote("TT", self.parser.k.mandatoryPhrase.textPhrase)
+        # note.pinned = self.parser.k.optionalPhrase.pinned
+        # note.color =self.parser.k.optionalPhrase.color
         # except Exception as error:
         #     raise RuntimeError("Error creating note: %s" % str(error))
         self.keep.sync()
