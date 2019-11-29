@@ -66,7 +66,7 @@ class Parser:
     def buildSubphrase(self):
         currentWord = self.pSections.pop()
         subPhrase = ""
-        while (currentWord != "BLUE" and currentWord != "PINNED" and currentWord != "DESC:" and currentWord != "TEXT:"):
+        while (currentWord != "BLUE" and currentWord != "TRUE" and currentWord != "DESC:" and currentWord != "TEXT:"):
             subPhrase = subPhrase + " " + currentWord
             if ( len(self.pSections) >0 ):
                 currentWord= self.pSections.pop()
@@ -94,7 +94,8 @@ class Parser:
 
 
 
-phrase = "DESC: Test Title TEXT: The yellow bird meets the red bee BLUE PINNED"
+phrase = "BLUE DESC: Test Title TRUE TEXT: The yellow bird meets the red bee"
+# optional mandatory optional mandatory
 parser = Parser(phrase)
 
 
