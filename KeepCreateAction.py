@@ -37,6 +37,7 @@ class KeepCreateAction(BaseAction):
 
     def parse_create_note(self, data):
         self.parser = Parser(data)
+        self.value = "PCN"
         # self.assertEqual(parser.k.mandatoryPhrase.textPhrase, "The yellow bird meets the red bee")
         # self.assertEqual(parser.k.mandatoryPhrase.titlePhrase, "Test Title")
         # self.assertEqual(parser.k.optionalPhrase.pinned, False)
@@ -47,7 +48,7 @@ class KeepCreateAction(BaseAction):
         self.keep.login(self.username, self.password)
         
         # try:
-        note = self.keep.createNote("TT", self.parser.k.mandatoryPhrase.textPhrase)
+        note = self.keep.createNote("TT", self.value)
         # note.pinned = self.parser.k.optionalPhrase.pinned
         # note.color =self.parser.k.optionalPhrase.color
         # except Exception as error:
