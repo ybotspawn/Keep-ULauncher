@@ -1,3 +1,8 @@
+#Build a mechanism to detect that no mandatory values are presentand fail silently
+
+
+
+
 import gkeepapi
 import re
 
