@@ -18,26 +18,13 @@ class KeepCreateAction(BaseAction):
     def __init__(self, username, password, data):
         self.username = username
         self.password = password
-        self.parse_create_note(data)
+        self.parser = Parser(data)
         
     def keep_app_open(self):
         return False
 
     # def parse_create_note(self, data):
-    #     self.title = data.split(' ')[0]
-    #     if len(data.split(' ')) > 1:
-    #         self.text = data.replace(self.title, '').strip()
-    #     else:
-    #         self.text = ""
-
-    #     if not self.title:
-    #         self.title = "Placeholder"
-    #     if not self.text:
-    #         self.text = "Blank"
-
-    def parse_create_note(self, data):
-        self.parser = Parser(data)
-        self.value = "PCN"
+    #     self.parser = Parser(data)
         
     def run(self):
         self.keep = gkeepapi.Keep()
