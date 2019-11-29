@@ -6,55 +6,99 @@ TITLE_REGEX = "DESC:"
 PINNED_REGEX = "TRUE|FALSE"
 COLOR_REGEX = "BLUE|RED|GREEN|BROWN|DARKBLUE|GRAY|ORANGE|PINK|PURPLE|TEAL|WHITE|YELLOW"
 
-class QueryParser:
-    def __init__(self):
-        pass
-    def parse(self, stanza):
-        components = stanza.split()
-        self.query = Query()
-        for component in components:
-            print(component)
-            if (match_optional(component)): # if stanza starts with a color or pinned --- match_optional
-                #   optional
-                
-                pass
-        
-        
-        # if stanza starts with title (DESC:)
-        #   while true
-        #   peek next stanza until hit another token
-        # if stanza starts with text (TEXT:)
-        #   while true
-        #   peek next stanza until hit another token
-    def build_append_optional(self, component):
-        pass
-    def match_optional(self, component):
-        if (True):
-            return True
-        pass
-    def match_mandatory(self, component):
-        pass
-
-class Query:
-    self.mandatoryPhrase = None
-    self.optionalPhrase = None
+class KeepSentence:
+    mandatoryPhrase = None
+    optionalPhrase = None
 
 class Mandatory:
-    self.titlePhrase = None
-    self.textPhrase = None
+    titlePhrase = None
+    textPhrase = None
 
 class TitlePhrase:
-    self.title = None
+    title = None
 
 class TextPhrase:
-    self.text = None
+    text = None
 
 class Optional:
-    self.color = None
-    self.pinned = None
+    color = None
+    pinned = None
 
-class Color:
-    self.color = gkeepapi._node.ColorValue.White
+class Parser:
+    k = KeepSentence()
+    k.mandatoryPhrase = Mandatory()
+    k.optionalPhrase = Optional()
+    pSections = None
 
-class Pinned:
-    self.pinned = True
+    def __init__(self, phrase):      
+        self.pSections = self.reverse(phrase).strip().split(' ')
+        self.parseKeepSentence()
+    
+    def reverse(self, phrase): # convert to a new array rather than a string that in turn gets turned back into an array?
+        self.pSections = phrase.split(' ')
+        reversed = ""
+        while (len(self.pSections)>0):
+            reversed = reversed + " " + self.pSections.pop()
+        return reversed
+
+    def parseKeepSentence(self): #### MAKE THESE CALL EACH OTGHER
+        self.optionalParse()#"DESC: Test Title TEXT: The yellow bird meets the red bee BLUE TRUE")
+        self.mandatoryParse()
+        if (len(self.pSections) >0):
+            self.optionalParse()
+
+    def mandatoryParse(self):
+        directive = self.pSections.pop()
+        while (directive == "TEXT:" or directive =="DESC:"):
+            subPhrase = self.buildSubphrase()
+            self.buildMandatoryElement(directive, subPhrase)
+            directive = self.pSections.pop()
+        if (len(self.pSections) > 0):
+            self.pSections.append(directive)
+            self.optionalParse()
+
+    def buildMandatoryElement(self, directive, subPhrase):
+        if (directive == "DESC:"):
+            self.k.mandatoryPhrase.titlePhrase = subPhrase
+        else:
+            self.k.mandatoryPhrase.textPhrase = subPhrase
+
+    def buildSubphrase(self):
+        currentWord = self.pSections.pop()
+        subPhrase = ""
+        while (currentWord != "BLUE" and currentWord != "PINNED" and currentWord != "DESC:" and currentWord != "TEXT:"):
+            subPhrase = subPhrase + " " + currentWord
+            if ( len(self.pSections) >0 ):
+                currentWord= self.pSections.pop()
+            else:
+                break
+        self.pSections.append(currentWord)
+        return subPhrase.strip()
+
+    def buildOptionalElement(self, element):
+        if (element == "BLUE"):
+            self.k.optionalPhrase.color = gkeepapi._node.ColorValue.Blue
+        else:
+            self.k.optionalPhrase.pinned = True # should we only allow PINNED??? thus no false will be accepted as an argument?
+
+    def optionalParse(self):
+        currentWord = self.pSections.pop()
+        while (currentWord == "BLUE" or currentWord == "PINNED"): # using BLUE and PINNED right now
+            self.buildOptionalElement(currentWord)
+            if ( len(self.pSections) >0 ):
+                currentWord= self.pSections.pop()
+            else:
+                break
+        if (len(self.pSections) > 0):
+            self.pSections.append(currentWord)
+
+
+
+phrase = "DESC: Test Title TEXT: The yellow bird meets the red bee BLUE PINNED"
+parser = Parser(phrase)
+
+
+print(parser.k.mandatoryPhrase.titlePhrase)
+print(parser.k.mandatoryPhrase.textPhrase)
+print(parser.k.optionalPhrase.pinned)
+print(parser.k.optionalPhrase.color)

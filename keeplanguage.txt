@@ -10,4 +10,4 @@ Backus-Naur form langauge notation design for Keep Ulauncher note creation
 <text-phrase> ::= "TEXT:" <word>
 <word> ::= <word> [<word>]
 <color> ::= "BLUE" | "RED" | "GREEN" | "BROWN" | "DARKBLUE" | "GRAY" | "ORANGE" | "PINK" | "PURPLE" | "TEAL" | "WHITE" | "YELLOW"
-<pinned> ::= "TRUE" | "FALSE"
+<pinned> ::= "PINNED"
