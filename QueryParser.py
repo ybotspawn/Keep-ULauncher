@@ -21,8 +21,8 @@ class TextPhrase:
     text = None
 
 class Optional:
-    color = None
-    pinned = None
+    color = gkeepapi._node.ColorValue.White
+    pinned = False
 
 class Parser:
     k = KeepSentence()
@@ -31,21 +31,15 @@ class Parser:
     pSections = None
 
     def __init__(self, phrase):      
-        self.pSections = self.reverse(phrase).strip().split(' ')
+        self.pSections = self.reverse(phrase)
         self.parseKeepSentence()
     
     def reverse(self, phrase): # convert to a new array rather than a string that in turn gets turned back into an array?
-        self.pSections = phrase.split(' ')
-        reversed = ""
-        while (len(self.pSections)>0):
-            reversed = reversed + " " + self.pSections.pop()
-        return reversed
+        return [word for word in reversed(phrase.split(' '))] 
 
-    def parseKeepSentence(self): #### MAKE THESE CALL EACH OTGHER
-        self.optionalParse()#"DESC: Test Title TEXT: The yellow bird meets the red bee BLUE TRUE")
+    def parseKeepSentence(self): 
+        self.optionalParse()
         self.mandatoryParse()
-        if (len(self.pSections) >0):
-            self.optionalParse()
 
     def mandatoryParse(self):
         directive = self.pSections.pop()
@@ -79,11 +73,11 @@ class Parser:
         if (element == "BLUE"):
             self.k.optionalPhrase.color = gkeepapi._node.ColorValue.Blue
         else:
-            self.k.optionalPhrase.pinned = True # should we only allow PINNED??? thus no false will be accepted as an argument?
+            self.k.optionalPhrase.pinned = True 
 
     def optionalParse(self):
         currentWord = self.pSections.pop()
-        while (currentWord == "BLUE" or currentWord == "TRUE"): # using BLUE and PINNED right now
+        while (currentWord == "BLUE" or currentWord == "TRUE"): 
             self.buildOptionalElement(currentWord)
             if ( len(self.pSections) >0 ):
                 currentWord= self.pSections.pop()
@@ -91,15 +85,3 @@ class Parser:
                 break
         if (len(self.pSections) > 0):
             self.pSections.append(currentWord)
-
-
-
-phrase = "BLUE DESC: Test Title TRUE TEXT: The yellow bird meets the red bee"
-# optional mandatory optional mandatory
-parser = Parser(phrase)
-
-
-print(parser.k.mandatoryPhrase.titlePhrase)
-print(parser.k.mandatoryPhrase.textPhrase)
-print(parser.k.optionalPhrase.pinned)
-print(parser.k.optionalPhrase.color)
