@@ -83,7 +83,7 @@ class Parser:
 
     def optionalParse(self):
         currentWord = self.pSections.pop()
-        while (currentWord == "BLUE" or currentWord == "PINNED"): # using BLUE and PINNED right now
+        while (currentWord == "BLUE" or currentWord == "TRUE"): # using BLUE and PINNED right now
             self.buildOptionalElement(currentWord)
             if ( len(self.pSections) >0 ):
                 currentWord= self.pSections.pop()
