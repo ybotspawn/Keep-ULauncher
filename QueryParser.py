@@ -60,7 +60,7 @@ class Parser:
     def buildSubphrase(self):
         currentWord = self.pSections.pop()
         subPhrase = ""
-        while (currentWord != "BLUE" and currentWord != "TRUE" and currentWord != "DESC:" and currentWord != "TEXT:"):
+        while (not re.match(COLOR_REGEX, currentWord) and currentWord != "TRUE" and currentWord != "DESC:" and currentWord != "TEXT:"):
             subPhrase = subPhrase + " " + currentWord
             if ( len(self.pSections) >0 ):
                 currentWord= self.pSections.pop()
@@ -70,14 +70,14 @@ class Parser:
         return subPhrase.strip()
 
     def buildOptionalElement(self, element):
-        if (element == "BLUE"):
+        if (re.match(COLOR_REGEX, element)):
             self.k.optionalPhrase.color = gkeepapi._node.ColorValue.Blue
         else:
             self.k.optionalPhrase.pinned = True 
 
     def optionalParse(self):
         currentWord = self.pSections.pop()
-        while (currentWord == "BLUE" or currentWord == "TRUE"): 
+        while (re.match(COLOR_REGEX, currentWord) or currentWord == "TRUE"): 
             self.buildOptionalElement(currentWord)
             if ( len(self.pSections) >0 ):
                 currentWord= self.pSections.pop()
