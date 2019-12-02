@@ -1,6 +1,6 @@
 ## About
 
-This is a Google Keep launcher extension for the Ulauncher desktop assistant platform.  This project is currently a work in progress.  
+This is a Google Keep launcher extension for the ULauncher desktop assistant platform.  This project is currently a work in progress.  
 
 ## Pre Installation
 
@@ -8,7 +8,7 @@ Prior to installation, you should install the gkeepapi, by Kiwiz. Kudos to this 
 
 ## Installation
 
-This software can be installed into ULauncher by opening the Ulauncher preferences and installing this plugin via the extension tab:
+This software can be installed into ULauncher by opening the ULauncher preferences and installing this plugin via the extension tab:
 
 ![extension view](https://raw.githubusercontent.com/ybotspawn/Keep-ULauncher/master/images/extension-view.png)
 
