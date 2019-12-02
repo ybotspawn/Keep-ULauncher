@@ -3,3 +3,4 @@ __pycache__/
 .pytext_cache/
 .ionide/
 __pycache__/QueryParser.cpython-38.pyc
+.gitignore
