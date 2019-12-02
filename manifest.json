@@ -26,7 +26,7 @@
         "id": "keycode",
         "type": "input",
         "name": "Google API key",
-        "description": "API passcode for access to Google Keep.  This information is kept within the application and not shared.  Information on obtaining this key can be found here: https://support.google.com/accounts/answer/185833?hl=en&ctx=ch_b%2F0%2FDisplayUnlockCaptcha",
+        "description": "API passcode for access to Google Keep.  This information is kept within the application and not shared.  Information on obtaining this key can be found here: https://support.google.com/accounts/answer/185833",
         "default_value": ""
       }
     ]
