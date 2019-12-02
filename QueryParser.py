@@ -41,7 +41,7 @@ class Parser:
 
     def mandatoryParse(self):
         directive = self.pSections.pop()
-        while (re.match("TEXT:|DESC:", directive)):
+        while (re.match("TEXT|TITLE", directive)):
             subPhrase = self.buildSubphrase()
             self.buildMandatoryElement(directive, subPhrase)
             directive = self.pSections.pop()
@@ -50,7 +50,7 @@ class Parser:
             self.optionalParse()
 
     def buildMandatoryElement(self, directive, subPhrase):
-        if (directive == "DESC:"):
+        if (directive == "TITLE"):
             self.k.mandatoryPhrase.titlePhrase = subPhrase
         else:
             self.k.mandatoryPhrase.textPhrase = subPhrase
@@ -58,7 +58,7 @@ class Parser:
     def buildSubphrase(self):
         currentWord = self.pSections.pop()
         subPhrase = ""
-        while (not re.match("|".join(COLOR_MAPPING.keys()), currentWord) and not re.match("TEXT:|DESC:|TRUE", currentWord)):
+        while (not re.match("|".join(COLOR_MAPPING.keys()), currentWord) and not re.match("TEXT|TITLE|TRUE", currentWord)):
             subPhrase = subPhrase + " " + currentWord
             if ( len(self.pSections) >0 ):
                 currentWord= self.pSections.pop()
