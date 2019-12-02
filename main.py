@@ -24,7 +24,7 @@ class KeepExtension(Extension):
         self.subscribe(ItemEnterEvent, ItemEnterEventListener())    
 
 class ItemEnterEventListener(EventListener):
-    def on_event(self, event, extension):
+    def on_event(self, event, extension): # If create or if search
         eventData = event.get_data()
         data = eventData["data"]
         return KeepCreateAction(extension.preferences["keyuser"], extension.preferences["keycode"], data).run()
@@ -34,7 +34,7 @@ class KeywordQueryEventListener(EventListener):
         items = []
         data = event.get_argument()
         items.append(ExtensionResultItem(icon='images/keep-icon.svg', name="Create", description='Create a new note (eg COLOR TITLE Note title TEXT Your Note Text)', on_enter=ExtensionCustomAction({"id": 1, "data": data}, keep_app_open=False)))
-        # items.append(ExtensionResultItem(icon='images/keep-icon.svg', name="Search", description='Search existing notes', on_enter=ExtensionCustomAction("create", keep_app_open=True)))
+        items.append(ExtensionResultItem(icon='images/keep-icon.svg', name="Search", description='Search existing notes', on_enter=ExtensionCustomAction({"search": data}, keep_app_open=True)))
         return RenderResultListAction(items)
 
 if __name__ == "__main__":
