@@ -17,16 +17,57 @@ COLOR_MAPPING = {
 }
 
 class KeepSentence:
-    mandatoryPhrase = None
-    optionalPhrase = None
+    _mandatoryPhrase = None
+    _optionalPhrase = None
+
+    @property
+    def mandatoryPhrase(self): 
+        return self._mandatoryPhrase 
+    @mandatoryPhrase.setter
+    def mandatoryPhrase(self, mandatoryPhrase): 
+        self._mandatoryPhrase = mandatoryPhrase
+    @property
+    def optionalPhrase(self): 
+        return self._optionalPhrase 
+    @optionalPhrase.setter
+    def optionalPhrase(self, optionalPhrase): 
+        self._optionalPhrase = optionalPhrase
 
 class Mandatory:
-    titlePhrase = None
-    textPhrase = None
+    _titlePhrase = None
+    _textPhrase = None
+
+    @property
+    def titlePhrase(self): 
+        return self._titlePhrase 
+    @titlePhrase.setter
+    def titlePhrase(self, titlePhrase): 
+        self._titlePhrase = titlePhrase
+    @property
+    def textPhrase(self): 
+        return self._textPhrase
+    @textPhrase.setter
+    def textPhrase(self, textPhrase): 
+        self._textPhrase = textPhrase
 
 class Optional:
-    color = gkeepapi._node.ColorValue.White
-    pinned = False
+    _color = gkeepapi._node.ColorValue.White
+    _pinned = False
+
+    @property
+    def pinned(self): 
+        return self._pinned 
+    @pinned.setter
+    def pinned(self, pinned): 
+        self._pinned = pinned
+
+    @property
+    def color(self): 
+        return self._color
+    @color.setter
+    def color(self, color): 
+        self._color = color
+        
 
 class Parser:
     k = KeepSentence()
