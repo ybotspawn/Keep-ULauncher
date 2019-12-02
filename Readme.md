@@ -32,10 +32,10 @@ Usage is simple, simply open ULauncher and type gk followed by your Google Note 
 
 If you're unsure the basic syntax is as follows:
 
-TRUE - Denotes that the note should be pinned
-COLOR - Indicates the color the note should be, the defualt is White.  The available options are BLUE, RED, GREEN, BROWN, DARKBLUE, GRAY, ORANGE, PINK, PURPLE, TEAL, YELLOW.
-TEXT - Indicates the following text will be placed into the body of your note
-TITLE - Indicates the following text will be placed as the title of your note
+TRUE - Denotes that the note should be pinned <br />
+COLOR - Indicates the color the note should be, the defualt is White.  The available options are BLUE, RED, GREEN, BROWN, DARKBLUE, GRAY, ORANGE, PINK, PURPLE, TEAL, YELLOW. <br />
+TEXT - Indicates the following text will be placed into the body of your note <br />
+TITLE - Indicates the following text will be placed as the title of your note <br />
 
 Example:
 
