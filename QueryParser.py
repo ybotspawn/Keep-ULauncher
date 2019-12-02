@@ -67,7 +67,6 @@ class Optional:
     @color.setter
     def color(self, color): 
         self._color = color
-        
 
 class Parser:
     k = KeepSentence()
