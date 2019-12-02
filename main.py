@@ -33,7 +33,7 @@ class KeywordQueryEventListener(EventListener):
     def on_event(self, event, extension):
         items = []
         data = event.get_argument()
-        items.append(ExtensionResultItem(icon='images/keep-icon.svg', name="Create", description='Create a new note (eg COLOR TITLE Your Note title TEXT Your Note Text)', on_enter=ExtensionCustomAction({"id": 1, "data": data}, keep_app_open=False)))
+        items.append(ExtensionResultItem(icon='images/keep-icon.svg', name="Create", description='Create a new note (eg COLOR TITLE Note title TEXT Your Note Text)', on_enter=ExtensionCustomAction({"id": 1, "data": data}, keep_app_open=False)))
         # items.append(ExtensionResultItem(icon='images/keep-icon.svg', name="Search", description='Search existing notes', on_enter=ExtensionCustomAction("create", keep_app_open=True)))
         return RenderResultListAction(items)
 
