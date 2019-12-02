@@ -23,3 +23,20 @@ Once installed the software will likely require some further configuration to be
 ![config view](https://raw.githubusercontent.com/ybotspawn/Keep-ULauncher/master/images/menu-view.png)
 
 The second option is the Google API Key.  This can be your password, but your password will likely not work, especially if you have two factor authentication enabled.  To overcome this issue, you should follow the instructions here: https://support.google.com/accounts/answer/185833 and provide your API Key.  This key should be held locally and protected.
+
+## Usage
+
+Usage is simple, simply open ULauncher and type gk followed by your Google Note information.  A basic BNF style syntax document is available here:
+
+![Keep Language](https://raw.githubusercontent.com/ybotspawn/Keep-ULauncher/master/keeplanguage.txt)
+
+If you're unsure the basic syntax is as follows:
+
+TRUE - Denotes that the note should be pinned
+COLOR - Indicates the color the note should be, the defualt is White.  The available options are BLUE, RED, GREEN, BROWN, DARKBLUE, GRAY, ORANGE, PINK, PURPLE, TEAL, YELLOW.
+TEXT - Indicates the following text will be placed into the body of your note
+TITLE - Indicates the following text will be placed as the title of your note
+
+Example:
+
+![config view](https://raw.githubusercontent.com/ybotspawn/Keep-ULauncher/master/images/create-view.png)
